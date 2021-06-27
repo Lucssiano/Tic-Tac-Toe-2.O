@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* ### GENERAL ### */
+:root {
+	--font-page: 'Poppins', sans-serif;
+	--black: #000000;
+	--dark-grey: #121212;
+	--dark-charcoal: #333333;
+	--white: #ffffff;
+	--sea-green: #daf7a6;
+	--dark-green: #638475;
+	--green-pastel: #2a9d8f;
+	--light-orange: #f4a261;
+	--blue-pastel: #a6b1f7;
+	--light-blue: #a8dadc;
+}
+body {
+	font-family: var(--font-page);
+	background-color: var(--black);
+	text-align: center;
+	text-transform: uppercase;
+}
+button {
+	cursor: pointer;
+	border: none;
+	transition: 0.8s;
+	border-radius: 0.5rem;
+}
+.info-tictactoe-container .start-playing-button,
+.info-tictactoe-container .turn-section {
+	margin: 1rem 0;
+	padding: 2rem;
+	width: 25rem;
+	font-size: 2.2rem;
+	font-family: var(--font-page);
+	font-weight: 600;
+}
+/* ###################### */
+
+/* ### HEADER ### */
+header {
+	padding: 2rem;
+}
+header h1 {
+	color: var(--sea-green);
+	font-size: 3.5rem;
+}
+/* ###################### */
+
+/* ### MAIN ### */
+main .board-grid-container {
+	margin: 3rem 0;
+	display: grid;
+	grid-template-columns: repeat(3, 7.5rem);
+	grid-template-rows: repeat(3, 7.5rem);
+	justify-content: center;
+	gap: 0.3rem;
+}
+main .board-grid-container button.square {
+	background-color: var(--blue-pastel);
+}
+@media (min-width: 768px) {
+	main .board-grid-container .square:hover {
+		background-color: var(--dark-green);
+	}
+}
+/* ###################### */
+
+/* ### INFO OF THE TIC-TAC-TOE SECTION  ### */
+.info-tictactoe-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.info-tictactoe-container .letters-container {
+	margin: 2rem 0;
+}
+.info-tictactoe-container h2.choose-a-letter-title {
+	color: var(--light-orange);
+}
+.info-tictactoe-container button.letter-button {
+	background-color: var(--dark-green);
+	padding: 2rem 4rem;
+	margin: 0 0.5rem;
+	color: var(--white);
+	font-weight: 700;
+	box-shadow: 0 0 0.9rem -0.2rem var(--white);
+}
+@media (min-width: 768px) {
+	.info-tictactoe-container button.letter-button:hover {
+		background-color: var(--light-orange);
+		color: var(--black);
+	}
+}
+/* .info-tictactoe-container .start-playing-button {
+	background-color: var(--green-pastel);
+	color: var(--black);
+	box-shadow: 0 0 0.9rem -0.2rem var(--white);
+	text-transform: uppercase;
+}
+@media (min-width: 768px) {
+	.info-tictactoe-container .start-playing-button:hover {
+		background-color: var(--light-orange);
+	}
+} */
+.info-tictactoe-container .turn-section {
+	background-color: var(--light-orange);
+	padding: 2rem;
+	text-align: center;
+	box-shadow: none;
+}
+.info-tictactoe-container .turn-section p {
+	margin-bottom: 1rem;
+}
+.info-tictactoe-container .turn-section span.player-turn {
+	color: var(--white);
+	/* color: transparent; */
+	-webkit-text-stroke: 0.15rem var(--black);
+	letter-spacing: 0.1rem;
+}
+.info-tictactoe-container .scoreboard-container {
+	margin: 1.5rem;
+	padding: 1.5rem;
+	width: 25rem;
+	background-color: var(--blue-pastel);
+}
+.info-tictactoe-container .scoreboard-container h3 {
+	font-size: 3rem;
+	color: var(--white);
+	-webkit-text-stroke: 0.15rem var(--black);
+}
+.info-tictactoe-container .scoreboard-container h4 {
+	font-size: 2rem;
+	margin: 2rem 0 0.5rem 0;
+	color: var(--dark-grey);
+}
+.info-tictactoe-container .scoreboard-container span {
+	color: var(--white);
+	-webkit-text-stroke: 0.15rem var(--black);
+	font-size: 3rem;
+}
+/* ###################### */
+
+/* ### COPYRIGHT SECTION  ### */
+footer.copyright-section {
+	background-color: var(--dark-grey);
+	color: var(--dark-charcoal);
+	text-transform: lowercase;
+	padding: 2rem;
+}
+footer.copyright-section a {
+	color: var(--dark-charcoal);
+}
+/* ###################### */

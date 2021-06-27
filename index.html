@@ -1,17 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tatetí</title>
-    <link rel="icon" href="">
+    <title>Tic-Tac-Toe</title>
+    <link rel="icon" href="img/consola.svg">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+    <header>
+        <h1>TIC-TAC-TOE</h1>
+    </header>
 
+    <main>
+        <div class="board-grid-container">
+            <button class="square"></button>
+            <button class="square"></button>
+            <button class="square"></button>
+            <button class="square"></button>
+            <button class="square"></button>
+            <button class="square"></button>
+            <button class="square"></button>
+            <button class="square"></button>
+            <button class="square"></button>
+        </div>
+    </main>
+
+    <section class="info-tictactoe-container">
+        <h2 class="choose-a-letter-title">Choose a letter</h2>
+        <div class="letters-container">
+            <button class="letter-button x-button">X</button>
+            <button class="letter-button o-button">O</button>
+        </div>
+        <!-- <button class="start-playing-button">
+            Start Playing
+        </button> -->
+        <div class="turn-section">
+            <p>Turn of</p>
+            <span class="player-turn"></span>
+        </div>
+        <section class="scoreboard-container">
+            <h3>Scoreboard</h3>
+            <h4 class="user-h4">User</h4>
+            <span class="user-scoreboard">0</span>
+            <h4>Computer</h4>
+            <span class="computer-scoreboard">0</span>
+        </section>
+    </section>
+
+    <footer class="copyright-section">
+        <span> 
+         <a href="https://github.com/Lucssiano" target="_blank">Luccsiano</a> &copy; 2021
+        </span>
+    </footer>
+
+    <script src="js/main.js"></script>
 </body>
-
-</html>
