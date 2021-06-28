@@ -63,7 +63,6 @@ for (let i = 0; i < boardSquares.length; i++) {
 		} else {
 			boardSquares[i].disabled = true;
 			boardSquares[i].innerText = userLetter;
-			turn = 'Computer';
 			paintBoard();
 		}
 	});
@@ -71,27 +70,39 @@ for (let i = 0; i < boardSquares.length; i++) {
 
 // Función para pintar el tablero
 function paintBoard() {
-	availableSquaresArray = [];
-	if (turn === 'Computer') {
-		for (let i = 0; i < boardSquares.length; i++) {
-			if (boardSquares[i].disabled === false) {
-				availableSquaresArray.push(boardSquares[i]);
-				console.log(availableSquaresArray, 'disponibles');
+	turn = 'Computer';
+	// playerTurn.innerText = turn;
+	// VER COMO HACER PARA HACER EL CAMBIO DE TURNOS Y QUE SE VEA BIEN
+	setTimeout(() => {
+		availableSquaresArray = [];
+		if (turn === 'Computer') {
+			for (let i = 0; i < boardSquares.length; i++) {
+				if (boardSquares[i].disabled === false) {
+					availableSquaresArray.push(boardSquares[i]);
+					console.log(availableSquaresArray, 'disponibles');
+				}
+			}
+			let randomSquare = Math.floor(Math.random() * availableSquaresArray.length);
+			console.log(randomSquare, 'principio computer random');
+			if (availableSquaresArray !== []) {
+				availableSquaresArray[randomSquare].disabled = true;
+				availableSquaresArray[randomSquare].innerText = computerLetter;
+				winner();
 			}
 		}
-		let randomSquare = Math.floor(Math.random() * availableSquaresArray.length);
-		console.log(randomSquare, 'principio computer random');
-		if (availableSquaresArray !== []) {
-			availableSquaresArray[randomSquare].disabled = true;
-			availableSquaresArray[randomSquare].innerText = computerLetter;
-			winner();
-		}
-	}
+	}, 500);
 }
 // ------------- //
 
 // --- Winner section --- //
 function winner() {
+	const userScoreboard = $('.user-scoreboard');
+	const computerScoreboard = $('.computer-scoreboard');
+	const drawScoreboard = $('.draw-scoreboard');
+    let userCounter = 0;
+    let computerCounter = 0;
+    let drawCounter = 0;
+
 	let square0 = boardSquares[0].textContent;
 	let square1 = boardSquares[1].textContent;
 	let square2 = boardSquares[2].textContent;
@@ -147,6 +158,8 @@ function winner() {
 		setTimeout(() => {
 			return alert(`${userName} wins!`);
 		}, 500);
+		userCounter++;
+		userScoreboard.innerText = userCounter;
 		// cleanTicTacToe();
 	} else if (
 		firstCaseComputerWinner ||
@@ -161,11 +174,15 @@ function winner() {
 		setTimeout(() => {
 			return alert('Computer wins!');
 		}, 500);
+		computerCounter++;
+		computerScoreboard.innerText = computerCounter;
 		// cleanTicTacToe();
 	} else if (drawCase) {
 		setTimeout(() => {
 			return alert('Draw!');
 		}, 500);
+		drawCounter++;
+		drawScoreboard.innerText = drawCounter;
 		// cleanTicTacToe();
 	}
 }

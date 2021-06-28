@@ -93,17 +93,6 @@ main .board-grid-container button.square {
 		color: var(--black);
 	}
 }
-/* .info-tictactoe-container .start-playing-button {
-	background-color: var(--green-pastel);
-	color: var(--black);
-	box-shadow: 0 0 0.9rem -0.2rem var(--white);
-	text-transform: uppercase;
-}
-@media (min-width: 768px) {
-	.info-tictactoe-container .start-playing-button:hover {
-		background-color: var(--light-orange);
-	}
-} */
 .info-tictactoe-container .turn-section {
 	background-color: var(--light-orange);
 	padding: 2rem;
@@ -153,3 +142,6 @@ footer.copyright-section a {
 	color: var(--dark-charcoal);
 }
 /* ###################### */
+
+
+/* FALTA PONER QUE CUANDO LOS BOTONES ESTEN DESHABILITADOS NO SE PUEDA HACER HOVER */
