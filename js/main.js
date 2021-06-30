@@ -14,13 +14,30 @@ let turn;
 let userLetter;
 let computerLetter;
 
-// Funcion para mostrar los datos de los jugadores y que letra corresponde a cada uno
-function drawPlayersData() {
-	userScoreboardTitle.innerText = userName;
+// Función para que el usuario introduzca su nombre (esta función se autoejecuta)
+let userName;
+(() => {
+	while (userName === '' || userName === undefined || userName.length < 1 || userName.length >= 10) {
+		let userPrompt = prompt('Write down your name please (No more than 10 characters)');
+		userName = userPrompt.trim();
+	}
+	drawPlayersData();
+})();
+// ------------- //
+
+// Función para que generar un turno random para el principio del juego
+function randomTurn() {
 	let turnsArray = [userName, 'Computer'];
 	let randomTurn = Math.floor(Math.random() * turnsArray.length);
 	turn = turnsArray[randomTurn];
 	playerTurn.innerText = turn;
+}
+// ------------- //
+
+// Funcion para mostrar los datos de los jugadores y que letra corresponde a cada uno
+function drawPlayersData() {
+	userScoreboardTitle.innerText = userName;
+	randomTurn();
 	for (let i = 0; i < letterButtons.length; i++) {
 		letterButtons[i].addEventListener('click', (e) => {
 			letterButtons[0].disabled = true;
@@ -33,23 +50,12 @@ function drawPlayersData() {
 				userLetter = 'O';
 				computerLetter = 'X';
 			}
-			if ((turn === 'Computer')) {
+			if (turn === 'Computer') {
 				paintBoard();
 			}
 		});
 	}
 }
-
-// Función para que el usuario introduzca su nombre (esta función se autoejecuta)
-let userName;
-(() => {
-	while (userName === '' || userName === undefined || userName.length < 1 || userName.length >= 10) {
-		let userPrompt = prompt('Write down your name please (No more than 10 characters)');
-		userName = userPrompt.trim();
-	}
-	drawPlayersData();
-})();
-// ------------- //
 
 // --- Start Game --- //
 const boardSquares = $$('button.square');
@@ -67,7 +73,6 @@ for (let i = 0; i < boardSquares.length; i++) {
 			boardSquares[i].innerText = userLetter;
 			winner();
 			// Ver una manera más piola para no tener que poner lo del gameOver
-			// Creo que se puede solucionar cuando aplique lo de borrar el tablero
 			if (gameOver !== 1) {
 				nextTurn();
 				paintBoard();
@@ -177,7 +182,7 @@ function winner() {
 		}, 500);
 		userCounter++;
 		userScoreboard.innerText = userCounter;
-		// cleanTicTacToe();
+		cleanTicTacToe();
 	} else if (
 		firstCaseComputerWinner ||
 		secondCaseComputerWinner ||
@@ -194,7 +199,7 @@ function winner() {
 		}, 500);
 		computerCounter++;
 		computerScoreboard.innerText = computerCounter;
-		// cleanTicTacToe();
+		cleanTicTacToe();
 	} else if (drawCase) {
 		gameOver = 1;
 		setTimeout(() => {
@@ -202,16 +207,37 @@ function winner() {
 		}, 500);
 		drawCounter++;
 		drawScoreboard.innerText = drawCounter;
-		// cleanTicTacToe();
+		cleanTicTacToe();
 	}
 }
 // ------------- //
 
 // --- Clean Board of The TicTacToe section --- //
-// function cleanTicTacToe() {
-// 	boardSquares.forEach((square) => {
-// 		square.textContent = '';
-// 		square.disabled = false;
-// 	});
-// }
+function cleanTicTacToe() {
+	setTimeout(() => {
+		boardSquares.forEach((square) => {
+			square.textContent = '';
+			square.disabled = false;
+		});
+		letterButtons.forEach((letter) => {
+			letter.disabled = false;
+			letter.style.backgroundColor = 'var(--dark-green)';
+		});
+		randomTurn();
+		gameOver = 0;
+	}, 500);
+}
+// ------------- //
+
+// --- Clean Board and Scoreboard of The TicTacToe section --- //
+const restartScoreboardButton = $('.restart-scoreboard');
+restartScoreboardButton.addEventListener('click', () => {
+	cleanTicTacToe();
+	userCounter = 0;
+	userScoreboard.innerText = userCounter;
+	computerCounter = 0;
+	computerScoreboard.innerText = computerCounter;
+	drawCounter = 0;
+	drawScoreboard.innerText = drawCounter;
+});
 // ------------- //

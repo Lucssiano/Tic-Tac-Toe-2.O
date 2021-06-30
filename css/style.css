@@ -131,17 +131,36 @@ main .board-grid-container button.square {
 }
 /* ###################### */
 
+/* ### RESTART SCOREBOARD SECTION  ### */
+.restart-scoreboard {
+	width: 25rem;
+	padding: 1rem;
+	text-transform: uppercase;
+	background-color: #e63946;
+	color: var(--black);
+	box-shadow: 0 0 0.9rem -0.2rem var(--white);
+	font-weight: 700;
+}
+@media (min-width: 768px) {
+	.restart-scoreboard:hover {
+		background-color: var(--dark-green);
+		color: var(--white);
+	}
+}
+/* ###################### */
+
 /* ### COPYRIGHT SECTION  ### */
 footer.copyright-section {
 	background-color: var(--dark-grey);
 	color: var(--dark-charcoal);
 	text-transform: lowercase;
 	padding: 2rem;
+	margin-top: 2rem;
 }
 footer.copyright-section a {
 	color: var(--dark-charcoal);
 }
 /* ###################### */
 
-
 /* FALTA PONER QUE CUANDO LOS BOTONES ESTEN DESHABILITADOS NO SE PUEDA HACER HOVER */
+/* CAMBIAR COMO SE VE LA X Y LA O EN EL TATETÍ */
