@@ -58,9 +58,10 @@ main .board-grid-container {
 }
 main .board-grid-container button.square {
 	background-color: var(--blue-pastel);
+	font-size: 5rem;
 }
 @media (min-width: 768px) {
-	main .board-grid-container .square:hover {
+	main .board-grid-container .square:hover:enabled {
 		background-color: var(--dark-green);
 	}
 }
@@ -88,7 +89,7 @@ main .board-grid-container button.square {
 	box-shadow: 0 0 0.9rem -0.2rem var(--white);
 }
 @media (min-width: 768px) {
-	.info-tictactoe-container button.letter-button:hover {
+	.info-tictactoe-container button.letter-button:hover:enabled {
 		background-color: var(--light-orange);
 		color: var(--black);
 	}
