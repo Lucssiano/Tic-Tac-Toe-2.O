@@ -75,7 +75,9 @@ for (let i = 0; i < boardSquares.length; i++) {
 			// Ver una manera más piola para no tener que poner lo del gameOver
 			if (gameOver !== 1) {
 				nextTurn();
-				paintBoard();
+				setTimeout(() => {
+					paintBoard();
+				}, 500);
 			}
 		}
 	});
