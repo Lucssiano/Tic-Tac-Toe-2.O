@@ -1,0 +1,19 @@
+{
+    "header": {
+        "title": "Ta-te-Ti"
+    } ,
+    "letter": {
+        "title": "Elija una letra"
+    } ,
+    "turn": {
+        "title": "Turno de"
+    } ,
+    "scoreboard": {
+        "title": "Marcador" ,
+        "computer": "Computadora" ,
+        "draws": "Empates"
+    } ,
+    "restart-scoreboard": {
+        "title": "Reiniciar marcador"
+    }
+}

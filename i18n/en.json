@@ -1,0 +1,19 @@
+{
+    "header": {
+        "title": "Tic-Tac-Toe"
+    } ,
+    "letter": {
+        "title": "Choose a letter"
+    } ,
+    "turn": {
+        "title": "Turn of"
+    } ,
+    "scoreboard": {
+        "title": "Scoreboard" ,
+        "computer": "Computer" ,
+        "draws": "Draws"
+    } ,
+    "restart-scoreboard": {
+        "title": "Restart scoreboard"
+    }
+}

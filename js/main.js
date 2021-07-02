@@ -1,3 +1,5 @@
+import Translator from './translator.js';
+
 // Forma de simplificar los selectores para no escribirlos cada vez que se necesiten
 function $(selector) {
 	return document.querySelector(selector);
@@ -227,6 +229,7 @@ function cleanTicTacToe() {
 		});
 		randomTurn();
 		gameOver = 0;
+		userLetter = undefined;
 	}, 500);
 }
 // ------------- //
@@ -243,3 +246,34 @@ restartScoreboardButton.addEventListener('click', () => {
 	drawScoreboard.innerText = drawCounter;
 });
 // ------------- //
+
+// --- Translator section --- //
+let translator = new Translator({
+	persist: true,
+	languages: ['es', 'en'],
+});
+translator.load();
+
+const spanishButton = $('button.language.spanish');
+const spanishButtonImg = $('button.language.spanish img');
+const englishButton = $('button.language.english');
+const englishButtonImg = $('button.language.english img');
+
+spanishButton.addEventListener('click', () => {
+	translator.load('es');
+	if (!spanishButtonImg.classList.contains('active')) {
+		spanishButtonImg.classList.add('active');
+		englishButtonImg.classList.remove('active');
+	}
+});
+englishButton.addEventListener('click', () => {
+	translator.load('en');
+	if (!englishButtonImg.classList.contains('active')) {
+		englishButtonImg.classList.add('active');
+		spanishButtonImg.classList.remove('active');
+	}
+});
+// ------------- //
+
+// Como cambiar el idioma de la variable turn
+// Como cambiar el idioma de lo que se dice por las alertas

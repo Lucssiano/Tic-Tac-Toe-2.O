@@ -12,8 +12,17 @@
 
 <body>
     <header>
-        <h1>TIC-TAC-TOE</h1>
+        <h1 data-i18n="header.title">TIC-TAC-TOE</h1>
     </header>
+
+    <div class="change-language">
+        <button class="language spanish">
+            <img src="img/spain.svg" class="spanish-flag"></img>
+        </button>
+        <button class="language english">
+            <img src="img/united-states-of-america.svg" class="english-flag active"></img>
+        </button>
+    </div>
 
     <main>
         <div class="board-grid-container">
@@ -30,36 +39,36 @@
     </main>
 
     <section class="info-tictactoe-container">
-        <h2 class="choose-a-letter-title">Choose a letter</h2>
+        <h2 class="choose-a-letter-title" data-i18n="letter.title">Choose a letter</h2>
         <div class="letters-container">
             <button class="letter-button x-button">X</button>
             <button class="letter-button o-button">O</button>
         </div>
         <div class="turn-section">
-            <p>Turn of</p>
-            <span class="player-turn"></span>
+            <p data-i18n="turn.title">Turn of</p>
+            <!-- Fijarse como pasar el turno como dato -->
+            <span class="player-turn" data-i18n="${turn}"></span>
         </div>
         <section class="scoreboard-container">
-            <h3>Scoreboard</h3>
+            <h3 data-i18n="scoreboard.title">Scoreboard</h3>
             <h4 class="user-h4">User</h4>
             <span class="user-scoreboard">0</span>
-            <h4>Computer</h4>
+            <h4 data-i18n="scoreboard.computer">Computer</h4>
             <span class="computer-scoreboard">0</span>
-            <h4>Draws</h4>
+            <h4 data-i18n="scoreboard.draws">Draws</h4>
             <span class="draw-scoreboard">0</span>
         </section>
     </section>
 
-    <!-- PONER UN BOTON PARA REINICIAR DATOS DEL TABLERO Y/O JUEGO -->
-    <button class="restart-scoreboard">
+    <button class="restart-scoreboard" data-i18n="restart-scoreboard.title">
         Restart Scoreboard
     </button>
 
     <footer class="copyright-section">
-        <span> 
-         <a href="https://github.com/Lucssiano" target="_blank">Luccsiano</a> &copy; 2021
+        <span>
+            <a href="https://github.com/Lucssiano" target="_blank">Luccsiano</a> &copy; 2021
         </span>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" type="module"></script>
 </body>
