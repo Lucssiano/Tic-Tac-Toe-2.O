@@ -18,6 +18,7 @@ let computerLetter;
 
 // Función para que el usuario introduzca su nombre (esta función se autoejecuta)
 let userName;
+let computer = 'Computer';
 (() => {
 	while (userName === '' || userName === undefined || userName.length < 1 || userName.length >= 10) {
 		let userPrompt = prompt('Write down your name please (No more than 10 characters)');
@@ -29,7 +30,7 @@ let userName;
 
 // Función para que generar un turno random para el principio del juego
 function randomTurn() {
-	let turnsArray = [userName, 'Computer'];
+	let turnsArray = [userName, computer];
 	let randomTurn = Math.floor(Math.random() * turnsArray.length);
 	turn = turnsArray[randomTurn];
 	playerTurn.innerText = turn;
@@ -52,7 +53,7 @@ function drawPlayersData() {
 				userLetter = 'O';
 				computerLetter = 'X';
 			}
-			if (turn === 'Computer') {
+			if (turn === computer) {
 				paintBoard();
 			}
 		});
@@ -87,12 +88,12 @@ for (let i = 0; i < boardSquares.length; i++) {
 
 // Función para mostrar los turnos en cada jugada
 function nextTurn() {
-	if (turn === 'Computer') {
+	if (turn === computer) {
 		playerTurn.innerText = userName;
 		return (turn = userName);
 	} else {
-		playerTurn.innerText = 'Computer';
-		return (turn = 'Computer');
+		playerTurn.innerText = computer;
+		return (turn = computer);
 	}
 }
 
@@ -260,6 +261,8 @@ const englishButton = $('button.language.english');
 const englishButtonImg = $('button.language.english img');
 
 spanishButton.addEventListener('click', () => {
+	computer = 'Computadora';
+	playerTurn.innerText = computer;
 	translator.load('es');
 	if (!spanishButtonImg.classList.contains('active')) {
 		spanishButtonImg.classList.add('active');
@@ -267,6 +270,8 @@ spanishButton.addEventListener('click', () => {
 	}
 });
 englishButton.addEventListener('click', () => {
+	computer = 'Computer';
+	playerTurn.innerText = computer;
 	translator.load('en');
 	if (!englishButtonImg.classList.contains('active')) {
 		englishButtonImg.classList.add('active');
@@ -275,5 +280,5 @@ englishButton.addEventListener('click', () => {
 });
 // ------------- //
 
-// Como cambiar el idioma de la variable turn
 // Como cambiar el idioma de lo que se dice por las alertas
+// Hacer ifs con el turno de computer
