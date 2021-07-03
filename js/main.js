@@ -253,7 +253,7 @@ let translator = new Translator({
 	persist: true,
 	languages: ['es', 'en'],
 });
-translator.load();
+// translator.load();
 
 const spanishButton = $('button.language.spanish');
 const spanishButtonImg = $('button.language.spanish img');
