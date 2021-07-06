@@ -44,8 +44,8 @@ class Translator {
 					localStorage.setItem('language', this._lang);
 				}
 			})
-			.catch(() => {
-				console.error(`Could not load ${path}. Please make sure that the path is correct.`);
+			.catch((error) => {
+				console.error(error);
 			});
 	}
 
