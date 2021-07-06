@@ -13,7 +13,7 @@
         "computer": "Computer" ,
         "draws": "Draws"
     } ,
-    "restart-scoreboard": {
+    "restartScoreboard": {
         "title": "Restart scoreboard"
     }
 }

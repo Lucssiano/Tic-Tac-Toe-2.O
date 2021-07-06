@@ -13,7 +13,7 @@
         "computer": "Computadora" ,
         "draws": "Empates"
     } ,
-    "restart-scoreboard": {
+    "restartScoreboard": {
         "title": "Reiniciar marcador"
     }
 }
