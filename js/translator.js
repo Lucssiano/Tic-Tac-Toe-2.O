@@ -32,8 +32,8 @@ class Translator {
 			this._lang = lang;
 		}
 
-		var path = `/Tic-Tac-Toe-2.O${this._options.filesLocation}/${this._lang}.json`;
-		// var path = `${this._options.filesLocation}/${this._lang}.json`; /* Usar este para la rama de develop , ahí es para verlo localmente */
+		// var path = `/Tic-Tac-Toe-2.O${this._options.filesLocation}/${this._lang}.json`;
+		var path = `${this._options.filesLocation}/${this._lang}.json`; /* Usar este para la rama de develop , ahí es para verlo localmente */
 		console.log(path ,'path');
 		console.log(this._options.filesLocation , 'fileLocation');
 		console.log(this._lang , 'lang');
