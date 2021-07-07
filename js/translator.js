@@ -32,8 +32,10 @@ class Translator {
 			this._lang = lang;
 		}
 
-		var path = `/Tic-Tac-Toe-2.O${this._options.filesLocation}/${this._lang}.json`;
-		console.log(path);
+		// var path = `/Tic-Tac-Toe-2.O${this._options.filesLocation}/${this._lang}.json`;
+		var path = `${this._options.filesLocation}/${this._lang}.json`;
+		console.log(this._options.filesLocation);
+		console.log(this._lang);
 
 		fetch(path)
 			.then((response) => response.json())

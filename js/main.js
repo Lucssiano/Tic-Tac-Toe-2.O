@@ -262,7 +262,6 @@ const englishButtonImg = $('button.language.english img');
 
 spanishButton.addEventListener('click', () => {
 	computer = 'Computadora';
-	playerTurn.innerText = computer;
 	translator.load('es');
 	if (!spanishButtonImg.classList.contains('active')) {
 		spanishButtonImg.classList.add('active');
@@ -271,7 +270,6 @@ spanishButton.addEventListener('click', () => {
 });
 englishButton.addEventListener('click', () => {
 	computer = 'Computer';
-	playerTurn.innerText = computer;
 	translator.load('en');
 	if (!englishButtonImg.classList.contains('active')) {
 		englishButtonImg.classList.add('active');
