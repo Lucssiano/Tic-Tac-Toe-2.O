@@ -108,11 +108,9 @@ function paintBoard() {
 		for (let i = 0; i < boardSquares.length; i++) {
 			if (boardSquares[i].disabled === false) {
 				availableSquaresArray.push(boardSquares[i]);
-				console.log(availableSquaresArray, 'disponibles');
 			}
 		}
 		let randomSquare = Math.floor(Math.random() * availableSquaresArray.length);
-		console.log(randomSquare, 'principio computer random');
 		if (availableSquaresArray !== []) {
 			availableSquaresArray[randomSquare].disabled = true;
 			availableSquaresArray[randomSquare].innerText = computerLetter;
@@ -292,5 +290,4 @@ englishButton.addEventListener('click', () => {
 });
 // ------------- //
 
-// Como cambiar el idioma de lo que se dice por las alertas
-// Ver como arreglar que se cruzan los turnos
+// Si se quiere que no se haga trampa , la computadora debe escribir al instante y no con un lapso de tiempo
