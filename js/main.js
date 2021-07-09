@@ -53,7 +53,7 @@ function drawPlayersData() {
 				userLetter = 'O';
 				computerLetter = 'X';
 			}
-			if (turn === computer) {
+			if (turn === 'Computer' || turn === 'Computadora') {
 				paintBoard();
 			}
 		});
@@ -69,8 +69,11 @@ for (let i = 0; i < boardSquares.length; i++) {
 	squaresArray.push(boardSquares[i]);
 	boardSquares[i].addEventListener('click', () => {
 		if (userLetter === undefined) {
-			alert('You have to choose a letter first');
-			return false;
+			if (computer === 'Computer') {
+				return alert('You have to choose a letter first');
+			} else {
+				return alert('Primero debes elegir una letra');
+			}
 		} else {
 			boardSquares[i].disabled = true;
 			boardSquares[i].innerText = userLetter;
@@ -183,7 +186,11 @@ function winner() {
 	) {
 		gameOver = 1;
 		setTimeout(() => {
-			return alert(`${userName} wins!`);
+			if (computer === 'Computer') {
+				return alert(`${userName} wins!`);
+			} else {
+				return alert(`${userName} gana!`);
+			}
 		}, 500);
 		userCounter++;
 		userScoreboard.innerText = userCounter;
@@ -200,7 +207,11 @@ function winner() {
 	) {
 		gameOver = 1;
 		setTimeout(() => {
-			return alert('Computer wins!');
+			if (computer === 'Computer') {
+				return alert('Computer wins!');
+			} else {
+				return alert('Computadora gana!');
+			}
 		}, 500);
 		computerCounter++;
 		computerScoreboard.innerText = computerCounter;
@@ -208,7 +219,11 @@ function winner() {
 	} else if (drawCase) {
 		gameOver = 1;
 		setTimeout(() => {
-			return alert('Draw!');
+			if (computer === 'Computer') {
+				return alert('Draw!');
+			} else {
+				return alert('Empate!');
+			}
 		}, 500);
 		drawCounter++;
 		drawScoreboard.innerText = drawCounter;
@@ -253,7 +268,6 @@ let translator = new Translator({
 	persist: true,
 	languages: ['es', 'en'],
 });
-// translator.load();
 
 const spanishButton = $('button.language.spanish');
 const spanishButtonImg = $('button.language.spanish img');
@@ -279,4 +293,4 @@ englishButton.addEventListener('click', () => {
 // ------------- //
 
 // Como cambiar el idioma de lo que se dice por las alertas
-// Hacer ifs con el turno de computer
+// Ver como arreglar que se cruzan los turnos

@@ -33,14 +33,15 @@ class Translator {
 		}
 
 		// var path = `/Tic-Tac-Toe-2.O${this._options.filesLocation}/${this._lang}.json`;
-		var path = `${this._options.filesLocation}/${this._lang}.json`; /* Usar este para la rama de develop , ahí es para verlo localmente */
-		console.log(path ,'path');
-		console.log(this._options.filesLocation , 'fileLocation');
-		console.log(this._lang , 'lang');
+		var path = `${this._options.filesLocation}/${this._lang}.json`; /* Usar este para la rama de develop , es para ver el Tatetí localmente */
+		console.log(path, 'path');
+		console.log(this._options.filesLocation, 'fileLocation');
+		console.log(this._lang, 'lang');
 
 		fetch(path)
 			.then((response) => response.json())
 			.then((translation) => {
+				console.log(translation, 'translation');
 				this.translate(translation);
 				this.toggleLangTag();
 
@@ -62,8 +63,10 @@ class Translator {
 	translate(translation) {
 		function replace(element) {
 			var text = element.dataset.i18n.split('.').reduce((obj, i) => obj[i], translation);
-
+			console.log(element, 'element');
+		
 			if (text) {
+				console.log(text, 'text');
 				element.innerHTML = text;
 			}
 		}
