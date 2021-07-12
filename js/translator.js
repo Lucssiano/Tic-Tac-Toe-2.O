@@ -1,81 +1,71 @@
-'use strict';
+// Forma de simplificar los selectores para no escribirlos cada vez que se necesiten
+function $$(selector) {
+	return document.querySelectorAll(selector);
+}
 
 class Translator {
-	constructor(options = {}) {
-		this._options = Object.assign({}, this.defaultConfig, options);
-		this._lang = this.getLanguage();
-		this._elements = document.querySelectorAll('[data-i18n]');
+	constructor() {
+		this._elements = $$('[data-i18n]');
+		this._spanishChanges = {
+			header: {
+				title: 'Ta-te-Ti',
+			},
+			letter: {
+				title: 'Elija una letra',
+			},
+			turn: {
+				title: 'Turno de',
+			},
+			scoreboard: {
+				title: 'Marcador',
+				computer: 'Computadora',
+				draws: 'Empates',
+			},
+			restartScoreboard: {
+				title: 'Reiniciar marcador',
+			},
+		};
+		this._englishChanges = {
+			header: {
+				title: 'Tic-Tac-Toe',
+			},
+			letter: {
+				title: 'Choose a letter',
+			},
+			turn: {
+				title: 'Turn of',
+			},
+			scoreboard: {
+				title: 'Scoreboard',
+				computer: 'Computer',
+				draws: 'Draws',
+			},
+			restartScoreboard: {
+				title: 'Restart scoreboard',
+			},
+		};
 	}
 
-	getLanguage() {
-		if (!this._options.detectLanguage) {
-			return this._options.defaultLanguage;
+	/* Función que se llama desde main.js con el lenguaje seleccionado , el cual se ingresa como parámetro en esta función */
+	changeLanguage(lang) {
+		let finalLang;
+		switch (lang) {
+			case 'es':
+				finalLang = this._spanishChanges;
+				break;
+			case 'en':
+				finalLang = this._englishChanges;
+				break;
+			default:
+				console.error("Sorry , we can't translate the page");
 		}
-
-		var stored = localStorage.getItem('language');
-
-		if (this._options.persist && stored) {
-			return stored;
-		}
-
-		var lang = navigator.languages ? navigator.languages[0] : navigator.language;
-
-		return lang.substr(0, 2);
-	}
-
-	load(lang = null) {
-		if (lang) {
-			if (!this._options.languages.includes(lang)) {
-				return;
-			}
-
-			this._lang = lang;
-		}
-
-		var path = `/Tic-Tac-Toe-2.O${this._options.filesLocation}/${this._lang}.json`;
-		// var path = `${this._options.filesLocation}/${this._lang}.json`; /* Usar este para la rama de develop , es para ver el Tatetí localmente */
-
-		fetch(path)
-			.then((response) => response.json())
-			.then((translation) => {
-				this.translate(translation);
-				this.toggleLangTag();
-
-				if (this._options.persist) {
-					localStorage.setItem('language', this._lang);
-				}
-			})
-			.catch((error) => {
-				console.error(error);
-			});
-	}
-
-	toggleLangTag() {
-		if (document.documentElement.lang !== this._lang) {
-			document.documentElement.lang = this._lang;
-		}
-	}
-
-	translate(translation) {
-		function replace(element) {
-			var text = element.dataset.i18n.split('.').reduce((obj, i) => obj[i], translation);
-
+		/* Recorrido por los elementos que se quieren traducir , y se reemplaza el texto anterior por el que se quiere traducir */
+		this._elements.forEach((element) => {
+			let text = element.dataset.i18n.split('.').reduce((obj, i) => obj[i], finalLang);
 			if (text) {
 				element.innerHTML = text;
 			}
-		}
-
-		this._elements.forEach(replace);
-	}
-
-	get defaultConfig() {
-		return {
-			persist: false,
-			languages: ['en'],
-			defaultLanguage: 'en',
-			detectLanguage: true,
-			filesLocation: '/i18n',
-		};
+		});
 	}
 }
 

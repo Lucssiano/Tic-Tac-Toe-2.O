@@ -263,8 +263,7 @@ restartScoreboardButton.addEventListener('click', () => {
 
 // --- Translator section --- //
 let translator = new Translator({
-	persist: true,
-	languages: ['es', 'en'],
+	langSelected: '',
 });
 
 const spanishButton = $('button.language.spanish');
@@ -274,7 +273,8 @@ const englishButtonImg = $('button.language.english img');
 
 spanishButton.addEventListener('click', () => {
 	computer = 'Computadora';
-	translator.load('es');
+	translator.langSelected = 'es';
+    translator.changeLanguage(translator.langSelected);
 	if (!spanishButtonImg.classList.contains('active')) {
 		spanishButtonImg.classList.add('active');
 		englishButtonImg.classList.remove('active');
@@ -282,7 +282,8 @@ spanishButton.addEventListener('click', () => {
 });
 englishButton.addEventListener('click', () => {
 	computer = 'Computer';
-	translator.load('en');
+	translator.langSelected = 'en';
+    translator.changeLanguage(translator.langSelected);
 	if (!englishButtonImg.classList.contains('active')) {
 		englishButtonImg.classList.add('active');
 		spanishButtonImg.classList.remove('active');
